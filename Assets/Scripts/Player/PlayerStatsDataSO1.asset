@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756c1b6f740f7584d8e70a31a39227a0, type: 3}
+  m_Name: PlayerStatsDataSO1
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsDataSO1
+  startLevel: 1
+  startStatPoints: 0
+  baseMaxHealth: 200
+  baseDamage: 10
+  baseMoveSpeed: 5
+  healthPerPoint: 20
+  damagePerPoint: 5
+  attackSpeedPerPoint: 0.2
+  moveSpeedPerPoint: 0.5
+  baseExperienceToNextLevel: 100
+  experienceGrowth: 1.25
+  statPointsPerLevel: 1
