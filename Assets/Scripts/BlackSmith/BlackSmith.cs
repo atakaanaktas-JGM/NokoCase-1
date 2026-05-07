@@ -36,7 +36,7 @@ public class Blacksmith : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // 🔥 BUY
+    // BUY
     public void BuyMultiShot()
     {
         if (PlayerStats.Instance == null) return;

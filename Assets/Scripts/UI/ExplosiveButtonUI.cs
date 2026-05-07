@@ -27,12 +27,12 @@ public class ExplosiveButtonUI : MonoBehaviour
             return;
         }
 
-        // 🔥 hazır durumda
+       
         if (combat.IsExplosiveReady)
         {
             text.text = "READY";
         }
-        // 🔥 cooldown
+  
         else if (combat.IsExplosiveOnCooldown)
         {
             text.text =
@@ -40,13 +40,13 @@ public class ExplosiveButtonUI : MonoBehaviour
                     combat.ExplosiveCooldownTimer
                 ).ToString();
         }
-        // 🔥 normal
+       
         else
         {
             text.text = "EXPLOSIVE";
         }
 
-        // 🔥 button logic
+        
         button.interactable =
             !combat.IsExplosiveReady &&
             !combat.IsExplosiveOnCooldown;

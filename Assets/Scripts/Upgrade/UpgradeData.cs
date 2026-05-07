@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// UpgradeData: ScriptableObject. Her upgrade tipi için bir asset oluþturulur.
-/// Inspector'dan kolayca düzenlenebilir; kod deðiþikliði gerektirmez.
-/// </summary>
+
 [CreateAssetMenu(fileName = "UpgradeData", menuName = "NokoGame/UpgradeData")]
 public class UpgradeData : ScriptableObject
 {
@@ -17,7 +14,7 @@ public class UpgradeData : ScriptableObject
 
     [Header("Cost")]
     public int baseCost = 50;
-    public float costMultiplier = 1.5f;  // her seviyede maliyet * bu katsayý
+    public float costMultiplier = 1.5f;  
     public int maxLevel = 10;
 
     /// <summary>

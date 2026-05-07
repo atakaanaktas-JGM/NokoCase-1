@@ -15,7 +15,7 @@ public class PoisonButtonUI : MonoBehaviour
     {
         var stats = PlayerStats.Instance;
 
-        // 🔥 unlock yoksa direkt kapalı
+        
         if (!stats.IsPoisonUnlocked)
         {
             text.text = "LOCKED";

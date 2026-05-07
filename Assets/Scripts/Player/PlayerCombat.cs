@@ -284,10 +284,10 @@ public class PlayerCombat : MonoBehaviour
             if (dist > bowRange)
                 continue;
 
-            // 🔥 DAMAGE
+            //  DAMAGE
             t.TakeDamage(damage);
 
-            // 🔥 POISON
+            //  POISON
             if (isPoisonActive)
             {
                 t.ApplyPoison(
@@ -296,20 +296,20 @@ public class PlayerCombat : MonoBehaviour
                 );
             }
 
-            // 🔥 EXPLOSION
+            //  EXPLOSION
             if (shouldExplode)
             {
                 Explode(t.transform.position);
             }
 
-            // 🔥 VISUAL
+            //  VISUAL
             ArrowSystem.Instance?.Shoot(
                 transform.position + Vector3.up * 1.5f,
                 t.transform.position
             );
         }
 
-        // 🔥 explosive tek kullanım
+        //  explosive onlysingle
         if (shouldExplode)
         {
             isExplosiveReady = false;

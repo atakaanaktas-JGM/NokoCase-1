@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
     private bool isAttacking;
     private bool isReturning;
 
-    // SADECE movement için
+    
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
 
     void Awake()

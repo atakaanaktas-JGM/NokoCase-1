@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 /// <summary>
-/// CurrencyManager: Singleton. Oyun parasýný (Gold) yönetir.
+/// CurrencyManager Singleton.
 /// </summary>
 public class CurrencyManager : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class CurrencyManager : MonoBehaviour
 
     public int CurrentCurrency => currentCurrency;
 
-    // Herhangi bir UI bileþeni bu event'e abone olabilir
+    
     public event Action<int> OnCurrencyChanged;
 
     private void Awake()
@@ -28,9 +28,7 @@ public class CurrencyManager : MonoBehaviour
         OnCurrencyChanged?.Invoke(currentCurrency);
     }
 
-    /// <summary>
-    /// Harcama denemesi. Yeterli para varsa düþer ve true döner.
-    /// </summary>
+    
     public bool TrySpend(int amount)
     {
         if (currentCurrency < amount) return false;

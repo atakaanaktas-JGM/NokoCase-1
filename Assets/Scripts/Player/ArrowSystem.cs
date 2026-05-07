@@ -20,7 +20,7 @@ public class ArrowSystem : MonoBehaviour
         Instance = this;
     }
 
-    // 🔥 DOĞRU POOL SEÇİMİ
+    // poolSelection
     private Transform GetArrow()
     {
         Transform[] pool = combat.IsPoisonActive ? poisonPool : normalPool;
@@ -54,7 +54,7 @@ public class ArrowSystem : MonoBehaviour
 
             Vector3 pos = Vector3.Lerp(start, end, t);
 
-            // 🔥 hafif arc (ok hissi)
+            // arc
             float arc = Mathf.Sin(t * Mathf.PI) * 0.5f;
             pos.y += arc;
 

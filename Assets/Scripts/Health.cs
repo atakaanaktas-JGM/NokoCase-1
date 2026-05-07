@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     
 
     [Header("Death Settings")]
-    [SerializeField] private float deathDelay = 2f; // animasyon süresi
+    [SerializeField] private float deathDelay = 2f; 
 
     [SerializeField] private ParticleSystem poisonVFX;
     private Coroutine poisonRoutine;
@@ -65,7 +65,7 @@ public class Health : MonoBehaviour
         }
         if (CompareTag("Enemy"))
         {
-             // değeri ayarla
+            
             GetComponent<HitFlash>()?.Flash();
             animator.SetTrigger(GetHitHash);
         }
@@ -100,12 +100,11 @@ public class Health : MonoBehaviour
                 cc.enabled = false;
             GameManager.Instance.RespawnPlayerWithDelay();
         }
-        // 🎯 Enemy reward sistemi
+       
         if (CompareTag("Enemy"))
         {
 
-            // 🔥 XP EKLE
-         
+        
                 PlayerStats.Instance.AddExperience(xpReward);
                 GameManager.Instance?.OnEnemyKilled(goldReward);
                 EnemySpawner.Instance?.OnEnemyDied();
@@ -118,24 +117,22 @@ public class Health : MonoBehaviour
         }
         if (poisonVFX != null)
             poisonVFX.Stop();
-        // 🎯 AI ve hareketi durdur
+   
         var ai = GetComponent<EnemyAI>();
         if (ai != null) ai.enabled = false;
 
         var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent != null) agent.isStopped = true;
 
-        // 🎯 collider kapat (çok önemli)
         var col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
 
-        // 🎯 death animasyonu
         if (animator != null)
         {
             animator.SetTrigger(DeathHash);
         }
 
-        // 🎯 belirli süre sonra yok et
+     
       
     }
 

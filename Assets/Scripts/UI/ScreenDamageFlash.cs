@@ -19,7 +19,7 @@ public class ScreenDamageFlash : MonoBehaviour
 
     private void Start()
     {
-        // 🔥 başlangıçta tamamen kapalı
+     
         SetAlpha(0f);
     }
 
@@ -33,10 +33,10 @@ public class ScreenDamageFlash : MonoBehaviour
 
     private IEnumerator FlashRoutine()
     {
-        // 🔥 anlık göster
+     
         SetAlpha(flashAmount);
 
-        // 🔥 fade out
+      
         float alpha = flashAmount;
 
         while (alpha > 0.01f)
@@ -46,7 +46,7 @@ public class ScreenDamageFlash : MonoBehaviour
             yield return null;
         }
 
-        // 🔥 tamamen sıfırla (çok önemli)
+       
         SetAlpha(0f);
     }
 

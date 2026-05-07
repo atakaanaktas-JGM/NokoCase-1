@@ -47,14 +47,14 @@ public class GameManager : MonoBehaviour
 
    
 
-    // ===================== RESPAWN =====================
+    // RESPAWN 
 
     public void RespawnPlayer()
     {
         var player = PlayerController.Instance;
         if (player == null) return;
 
-        // Pozisyon
+    
         player.transform.position = spawnPoint.position;
 
         // Health reset
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         health.isDead = false;
         health.ForceUpdateUI();
 
-        // Sistemleri tekrar aç
+       
         player.enabled = true;
 
         if (player.TryGetComponent(out CharacterController cc))
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             combat.enabled = true;
 
-            // güvenlik: stuck state kalmasýn
+            // stuckstate security
             combat.isAttacking = false;
         }
 

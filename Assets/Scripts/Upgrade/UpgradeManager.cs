@@ -6,7 +6,7 @@
 /// </summary>
 public class UpgradeManager : MonoBehaviour
 {
-    // 🔥 HER SEFERİNDE INSTANCE ÇEK (timing bug fix)
+
     private PlayerStats Stats => PlayerStats.Instance;
 
     // ---- BUTTON FUNCTIONS ----

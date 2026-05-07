@@ -49,7 +49,7 @@ public class BlacksmithUI : MonoBehaviour
         {
             poisonText.text = $"Poison : {poisonCost}G";
 
-            // gold yetiyor mu?
+           
             bool canBuy = stats.Gold >= poisonCost;
             poisonButton.interactable = canBuy;
         }

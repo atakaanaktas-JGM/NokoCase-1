@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         bool isMovementLocked = combat != null && combat.IsMovementLocked;
 
-        // 🔥 YENİ: movement lock
+        //  movement lock
         if (isMovementLocked)
         {
             moveDirection = Vector3.zero;
