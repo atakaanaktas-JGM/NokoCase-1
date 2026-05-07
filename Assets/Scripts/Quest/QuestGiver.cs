@@ -20,10 +20,23 @@ public class QuestGiver : MonoBehaviour
     private void Start()
     {
         dialogManager ??= DialogManager.Instance;
+
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.RegisterQuestGiver(this);
+
+            if (quest == null)
+                QuestManager.Instance.AssignNextQuestTo(this);
+        }
     }
 
     public void Interact()
     {
+        dialogManager ??= DialogManager.Instance;
+
+        if (quest == null)
+            QuestManager.Instance?.AssignNextQuestTo(this);
+
         if (dialogManager != null)
         {
             dialogManager.StartDialog(dialog, quest, this);
