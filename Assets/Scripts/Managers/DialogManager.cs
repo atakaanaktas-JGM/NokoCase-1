@@ -8,6 +8,8 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField] private GameObject dialogUI;
     [SerializeField] private TextMeshProUGUI dialogHeaderText;
+    [SerializeField] private TextMeshProUGUI questTitleText;
+    [SerializeField] private TextMeshProUGUI questDescriptionText;
     [SerializeField] private Button acceptQuestButton;
     [SerializeField] private Button claimRewardButton;
     [SerializeField] private QuestLog questLog;
@@ -37,11 +39,11 @@ public class DialogManager : MonoBehaviour
         currentQuestGiver = questGiver;
 
         dialogUI.SetActive(true);
-        dialogHeaderText.text = dialog.welcomeText;
         currentQuest = quest;
 
         if (quest == null)
         {
+            SetQuestText(dialog != null ? dialog.welcomeText : string.Empty, string.Empty);
             acceptQuestButton.gameObject.SetActive(false);
             claimRewardButton.gameObject.SetActive(false);
             return;
@@ -50,16 +52,19 @@ public class DialogManager : MonoBehaviour
         AcceptedQuest accepted = questLog.quests.Find(q => q.uID == quest.uID);
         if (accepted != null && accepted.QuestStatus == QuestStatus.COMPLETED)
         {
+            SetQuestText("Well done!", BuildQuestDescription(quest, accepted));
             claimRewardButton.gameObject.SetActive(true);
             acceptQuestButton.gameObject.SetActive(false);
         }
         else if (accepted == null)
         {
+            SetQuestText(quest.title, BuildQuestDescription(quest, null));
             acceptQuestButton.gameObject.SetActive(true);
             claimRewardButton.gameObject.SetActive(false);
         }
         else
         {
+            SetQuestText(quest.title, BuildQuestDescription(quest, accepted));
             acceptQuestButton.gameObject.SetActive(false);
             claimRewardButton.gameObject.SetActive(false);
         }
@@ -80,7 +85,7 @@ public class DialogManager : MonoBehaviour
 
         questLog.AddQuest(currentQuest);
         acceptQuestButton.gameObject.SetActive(false);
-        currentQuest = null;
+        StartDialog(null, currentQuest, currentQuestGiver);
     }
 
     private void ClaimReward()
@@ -98,5 +103,46 @@ public class DialogManager : MonoBehaviour
         accepted.QuestStatus = QuestStatus.CLAIMED;
         questManager?.AssignNextQuestTo(currentQuestGiver);
         CloseDialog();
+    }
+
+    private void SetQuestText(string title, string description)
+    {
+        if (questTitleText != null || questDescriptionText != null)
+        {
+            if (dialogHeaderText != null)
+                dialogHeaderText.text = title;
+
+            if (questTitleText != null)
+                questTitleText.text = title;
+
+            if (questDescriptionText != null)
+                questDescriptionText.text = description;
+
+            return;
+        }
+
+        if (dialogHeaderText != null)
+        {
+            dialogHeaderText.text = string.IsNullOrWhiteSpace(description)
+                ? title
+                : $"{title}\n{description}";
+        }
+    }
+
+    private static string BuildQuestDescription(Quest quest, AcceptedQuest accepted)
+    {
+        if (quest == null) return string.Empty;
+
+        string progress = string.Empty;
+
+        if (quest.amount > 0)
+        {
+            int currentAmount = accepted != null ? accepted.currentAmount : 0;
+            progress = $"\nProgress: {currentAmount}/{quest.amount}";
+        }
+
+        string rewards = $"\nReward: {quest.experience} EXP, {quest.gold} Gold";
+
+        return $"{quest.description}{progress}{rewards}";
     }
 }

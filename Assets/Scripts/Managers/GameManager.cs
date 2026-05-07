@@ -45,12 +45,7 @@ public class GameManager : MonoBehaviour
         uiManager?.UpdateCurrencyUI();
     }
 
-    public void GameOver()
-    {
-        IsGameRunning = false;
-        Time.timeScale = 0f;
-        uiManager?.ShowGameOver();
-    }
+   
 
     // ===================== RESPAWN =====================
 

@@ -32,10 +32,10 @@ public class WeaponManager : MonoBehaviour
         if (bowObject != null)
             bowObject.SetActive(weapon == WeaponType.Bow);
 
-        Debug.Log("Weapon switched to: " + weapon);
+      
     }
 
-    // UI için
+    // UI 
     public void SelectSword()
     {
         SetWeapon(WeaponType.Sword);

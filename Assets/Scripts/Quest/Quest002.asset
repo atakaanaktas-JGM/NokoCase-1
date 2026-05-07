@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3d7d72208efec46a6d2844622a2be6, type: 3}
+  m_Name: Quest002
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  uID: Quest002
+  title: Second Quest
+  description: Kill 5 Turtles .You can find them in the middle of map
+  experience: 150
+  gold: 150
+  amount: 5
+  targets:
+  - 8c8a7af5-69b6-4951-ac30-fb4989c6bdb6
+  talkTo: 
+  explore: {x: 0, y: 0, z: 0}
+  questGiver: 9f5a3b27-bfd9-4d88-a3aa-aa6579b7d11a
+  type: 0

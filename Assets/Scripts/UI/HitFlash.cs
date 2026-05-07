@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HitFlash : MonoBehaviour
 {
@@ -19,7 +20,21 @@ public class HitFlash : MonoBehaviour
     private void Awake()
     {
         if (renderers == null || renderers.Length == 0)
-            renderers = GetComponentsInChildren<Renderer>();
+        {
+            List<Renderer> validRenderers = new List<Renderer>();
+
+            Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer rend in allRenderers)
+            {
+                if (rend.CompareTag("IgnoreHitFlash"))
+                    continue;
+
+                validRenderers.Add(rend);
+            }
+
+            renderers = validRenderers.ToArray();
+        }
 
         originalMaterials = new Material[renderers.Length];
         originalEmissions = new Color[renderers.Length];
@@ -27,14 +42,17 @@ public class HitFlash : MonoBehaviour
         for (int i = 0; i < renderers.Length; i++)
         {
             originalMaterials[i] = renderers[i].material;
-            originalMaterials[i].EnableKeyword("_EMISSION");
-            originalEmissions[i] = originalMaterials[i].GetColor(EmissionColor);
+
+            if (originalMaterials[i].HasProperty(EmissionColor))
+            {
+                originalMaterials[i].EnableKeyword("_EMISSION");
+                originalEmissions[i] = originalMaterials[i].GetColor(EmissionColor);
+            }
         }
     }
 
     public void Flash()
     {
-
         StopAllCoroutines();
         StartCoroutine(FlashRoutine());
     }
@@ -42,11 +60,21 @@ public class HitFlash : MonoBehaviour
     private IEnumerator FlashRoutine()
     {
         for (int i = 0; i < renderers.Length; i++)
-            renderers[i].material.SetColor(EmissionColor, flashColor * flashIntensity);
+        {
+            if (originalMaterials[i].HasProperty(EmissionColor))
+            {
+                renderers[i].material.SetColor(EmissionColor, flashColor * flashIntensity);
+            }
+        }
 
         yield return new WaitForSeconds(flashDuration);
 
         for (int i = 0; i < renderers.Length; i++)
-            renderers[i].material.SetColor(EmissionColor, originalEmissions[i]);
+        {
+            if (originalMaterials[i].HasProperty(EmissionColor))
+            {
+                renderers[i].material.SetColor(EmissionColor, originalEmissions[i]);
+            }
+        }
     }
 }

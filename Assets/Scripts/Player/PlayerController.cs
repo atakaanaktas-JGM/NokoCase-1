@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 720f;
 
     [Header("Gravity")]

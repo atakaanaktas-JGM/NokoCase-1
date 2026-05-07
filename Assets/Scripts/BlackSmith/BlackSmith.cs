@@ -9,7 +9,6 @@ public class Blacksmith : MonoBehaviour
     [SerializeField] private int baseCost = 100;
     [SerializeField] private int poisonCost = 100;
     [SerializeField] private int explosiveCost = 100;
-    private bool playerInside = false;
 
     private void Start()
     {
@@ -21,8 +20,6 @@ public class Blacksmith : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        playerInside = true;
-
         if (shopUI != null)
             shopUI.SetActive(true);
 
@@ -32,8 +29,6 @@ public class Blacksmith : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        playerInside = false;
 
         if (shopUI != null)
             shopUI.SetActive(false);
