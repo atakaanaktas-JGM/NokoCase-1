@@ -7,8 +7,9 @@ Unity ile hazirlanmis oynanabilir Idle RPG / Arcade Idle prototipi.
 - Unity Version: 6000.3.11f1
 - Dil: C#
 - Hedef Platform: Mobile
-- Ana Sahne: `Assets/Scenes/SampleScene.unity`
+- Ana Sahne: `Assets/_CaseAssets/CaseScene.unity`
 - Secilen Silah: Bow
+- Onerilen Game View: 1920x1080 Landscape
 
 ## Oynanis Ozeti
 
@@ -118,8 +119,9 @@ Bu sayede designer tarafinda hasar, can, cooldown, quest description, reward ve 
 ## Calistirma
 
 1. Projeyi Unity 6000.3.11f1 ile acin.
-2. `Assets/Scenes/SampleScene.unity` sahnesini acin.
-3. Play Mode'a girin.
+2. `Assets/_CaseAssets/CaseScene.unity` sahnesini acin.
+3. Game View'u 1920x1080 Landscape olarak ayarlayin.
+4. Play Mode'a girin.
 
 ## Notlar
 
