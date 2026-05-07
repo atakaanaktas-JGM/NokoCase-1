@@ -8679,6 +8679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125006008430110042}
+  - component: {fileID: 4619287238201155808}
   m_Layer: 5
   m_Name: DamageFlash
   m_TagString: Untagged
@@ -8686,6 +8687,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4619287238201155808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619287238201155807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6b033b61fffe342ba4a33802be1a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenDamageFlash
+  cornerImages:
+  - {fileID: 2686908752894566077}
+  - {fileID: 8173194844308719750}
+  - {fileID: 8204081551494538006}
+  - {fileID: 8848690165785302358}
+  flashAmount: 0.5
+  fadeSpeed: 3
 --- !u!4 &4641816830103218102
 Transform:
   m_ObjectHideFlags: 0
